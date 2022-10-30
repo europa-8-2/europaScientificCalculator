@@ -62,12 +62,12 @@ public class MainApplication {
                 answer = divide(firstNumber, secondNumber);
             }
 
-            Console.println("%s", answer);
-
             firstNumber = answer; //answer is stored into the [first number variable] and can keep being used
 
+            Console.println("Answer and current calculator display: %s", firstNumber);
+
             continuePrompt = Console.getStringInput("Would you like to continue (y or n)? ");
-            Console.println("Your current working number %s", firstNumber);
+
 
             //            clearPrompt = Console.getStringInput("Would you like to clear the calculator?" );
 
@@ -95,4 +95,6 @@ public class MainApplication {
     public static double multiply(double num1, double num2) {
         return num1 * num2;
     }
+
+
 }
