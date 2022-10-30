@@ -7,6 +7,14 @@ public class MainApplication {
 
 
     public static void main(String[] args) {
+        double firstNumber = 0;
+        double secondNumber = 0;
+        String mathOperation = "";
+        //continue variable
+        String continuePrompt = "y";
+        double answer = 0;
+//        String clearPrompt;
+
 
 //        String s = Console.getStringInput("Enter a string");
 //        Integer i = Console.getIntegerInput("Enter an integer");
@@ -18,54 +26,73 @@ public class MainApplication {
 
         //Welcomes user to the calculator and explains how the calculator works. This will contain the keywords that will be used
         Console.println("Welcome to the Europa calculator!");
+        Console.println("You may use the following operations +, -,  *, /");
+//        Console.println("Type clear to set the calculator back to zero");
 
         //User is prompted for a number
-        double firstNumber = Console.getDoubleInput("Enter a number: ");
-        Console.println("The user input: %s", firstNumber); //code check
+        firstNumber = Console.getDoubleInput("Enter number: ");
 
-        //prompt user for what to do with the number. ie. add, subtract, divide
-        String mathOperation = Console.getStringInput("Enter a math operation: ");
-        Console.println("The user input: %s", mathOperation); //code check
 
-        //User is prompted for a second number. "What number do you want to [math function] [first number] by?
-        double secondNumber = Console.getDoubleInput("Enter number: ");
-        Console.println("The user input: %s", secondNumber); //code check
+        //while loop to continue
+        while (continuePrompt.equals("y")) {
+            //prompt user for what to do with the number. ie. add, subtract, divide
+            mathOperation = Console.getStringInput("Enter a math operation: ");
 
-        //if user input equals add
-        if (mathOperation.equals("+")) {
-            System.out.println("This is working");
-            Console.println("%s", add(firstNumber, secondNumber));
+            //User is prompted for a second number. "What number do you want to [math function] [first number] by?
+            secondNumber = Console.getDoubleInput("Enter number: ");
+
+            //if user input equals add
+            if (mathOperation.equals("+")) {
+                answer = add(firstNumber, secondNumber);
+
+            }
+
+            //if user input equals subtract
+            if (mathOperation.equals("-")) {
+                answer = subtract(firstNumber, secondNumber);
+            }
+
+            //if user input equals multiply
+            if (mathOperation.equals("*")) {
+                answer = multiply(firstNumber, secondNumber);
+            }
+
+            //if user input equals divide
+            if (mathOperation.equals("/")) {
+                answer = divide(firstNumber, secondNumber);
+            }
+
+            Console.println("%s", answer);
+
+            firstNumber = answer; //answer is stored into the [first number variable] and can keep being used
+
+            continuePrompt = Console.getStringInput("Would you like to continue (y or n)? ");
+            Console.println("Your current working number %s", firstNumber);
+
+            //            clearPrompt = Console.getStringInput("Would you like to clear the calculator?" );
+
         }
 
-        //if user input equals subtract
-        if (mathOperation.equals("-")) {
-            System.out.println("This is working");
-        }
+        //Give option to clear the firstNumber variable
 
-        //if user input equals multiply
-        if (mathOperation.equals("*")) {
-            System.out.println("This is working");
-        }
-
-        //if user input equals divide
-        if (mathOperation.equals("/")) {
-            System.out.println("This is working");
-        }
-        //Return answer
-
-        //go through the prompt again with the new firstNumber
-
-        //Give option to clear the console
-
-        //answer is stored into the [first number variable] and can keep being used
-
-        //test add method
-
+        //go through the prompt again
 
     }
     //void = no return statement
     //take out void if you don't use a return and add String
-    public static double add(double a, double b) {
-        return a + b;
+    public static double add(double num1, double num2) {
+        return num1 + num2;
+    }
+
+    public static double subtract(double num1, double num2) {
+        return num1 - num2;
+    }
+
+    public static double divide(double num1, double num2) {
+        return num1 / num2;
+    }
+
+    public static double multiply(double num1, double num2) {
+        return num1 * num2;
     }
 }
