@@ -41,8 +41,15 @@ public class MainApplication {
 //        Console.println("Type clear to set the calculator back to zero");
 
         //User is prompted for a number
-        firstNumber = Console.getDoubleInput("Enter number: ");
+        //Liu: try & catch make sure user type in digits.
+        try {
+            firstNumber = Console.getDoubleInput("Enter number: ");
+        }catch(NumberFormatException exc){
 
+            Console.println("Please type in a digit !!!");
+            firstNumber = Console.getDoubleInput("Enter number: ");
+
+        }
 
         //while loop to continue
         while (continuePrompt.equals("y")) {
@@ -69,8 +76,13 @@ public class MainApplication {
             }else{
                 Console.println("Calculator display: %s", firstNumber);
                 //User is prompted for a second number. "What number do you want to [math function] [first number] by?
-                secondNumber = Console.getDoubleInput("Enter number: ");
-
+                //Liu: this try & catch make sure second number won't be 0
+                try {
+                    secondNumber = Console.getDoubleInput("Enter number: ");
+                }catch(NumberFormatException){
+                    Console.println("Please type in a digit !!!");
+                    secondNumber = Console.getDoubleInput("Enter number: ");
+                }
                 //if user input equals add
                 if (mathOperation.equals("+")) {
                     answer = add(firstNumber, secondNumber);
