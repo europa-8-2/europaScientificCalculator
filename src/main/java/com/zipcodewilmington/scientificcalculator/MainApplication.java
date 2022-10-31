@@ -79,7 +79,7 @@ public class MainApplication {
                 //Liu: this try & catch make sure second number won't be 0
                 try {
                     secondNumber = Console.getDoubleInput("Enter number: ");
-                }catch(NumberFormatException){
+                }catch(NumberFormatException exc){
                     Console.println("Please type in a digit !!!");
                     secondNumber = Console.getDoubleInput("Enter number: ");
                 }
